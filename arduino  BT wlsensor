@@ -1,0 +1,30 @@
+#define rxPin 19                     // define SoftwareSerial rx data pin  
+#define txPin 18                    // define SoftwareSerial tx data pin  
+int LED = 13;                           // Use the onboard Uno LED
+int isObstaclePin = 4;               // This is our input pin
+int isObstacle = HIGH;             // HIGH MEANS NO OBSTACLE
+void setup() {
+  pinMode(LED, OUTPUT);
+  pinMode(isObstaclePin, INPUT);
+  pinMode(rxPin, INPUT);
+
+pinMode(txPin, OUTPUT);
+  Serial.begin(9600);
+   Serial1.begin(9600);
+}
+void loop() {
+  isObstacle = digitalRead(isObstaclePin);
+  if (isObstacle == LOW)
+  {
+    Serial.println("obstacle");
+    digitalWrite(LED, HIGH);
+    Serial1.println("obstacle!");  }
+  else
+  {
+    Serial.println("clear");
+    digitalWrite(LED, LOW);
+     Serial1.println("clear!");
+  }
+  delay(2000);
+   }
+
